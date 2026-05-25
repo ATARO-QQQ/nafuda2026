@@ -209,6 +209,7 @@
         /* 左側のシンプルなカラー帯 */
         .tag-color-bar {
             width: 14mm;
+            flex-shrink: 0; /* 名前の長さに関わらず幅を固定 */
             height: 100%;
             background-color: var(--theme-color);
             position: relative;
@@ -257,30 +258,35 @@
         /* テキストコンテンツ */
         .tag-content {
             flex: 1;
-            padding: 0 4mm;
+            padding: 0 5mm; /* 余白を少し広げて窮屈さを解消 */
             display: flex;
-            align-items: baseline;
-            gap: 4mm;
+            flex-direction: column; /* 漢字とローマ字を縦並びに変更 */
+            justify-content: center;
+            align-items: flex-start;
+            gap: 2.2mm; /* 漢字と英字の隙間をさらに少し広げて見やすく調整 */
             z-index: 10;
+            overflow: hidden; /* 名前が長すぎる場合は枠内に収める */
         }
 
         .tag-name {
-            font-size: 7.5mm;
+            font-size: 7.2mm; /* 文字を少し大きく */
             font-weight: 600;
-            letter-spacing: 2mm;
+            letter-spacing: 2mm; /* 文字間を広げてゆったりと */
             color: #111827;
             white-space: nowrap;
-            /* 背景グリッドに文字が埋もれないよう白フチをつける */
-            text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+            line-height: 1;
+            /* 背景グリッドに文字が埋もれないよう白フチを少し強化 */
+            text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 0px 1px 0 #fff, 1px 0px 0 #fff;
         }
 
         .tag-romaji {
-            font-size: 2.2mm;
-            color: #6b7280;
-            letter-spacing: 0.5mm;
+            font-size: 2.4mm; /* 英字も少し大きくして読みやすく */
+            color: #4b5563; /* 色を少し濃くして視認性アップ */
+            letter-spacing: 0.8mm; /* 字間を広げてスマートに */
             font-family: 'Noto Sans JP', sans-serif;
             text-transform: uppercase;
             font-weight: 500;
+            line-height: 1;
         }
     </style>
 </head>
